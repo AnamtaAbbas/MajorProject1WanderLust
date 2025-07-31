@@ -1,0 +1,72 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+    <h1>Edit your Listing</h1>
+    <form method="post" action="/listings/<%=data._id%>?_method=put" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" value="<%=data.title%>" name="listing[title]" class="form-control" required>
+            <div class="invalid-feedback">Title should be valid</div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" required><%=data.description%></textarea>
+            <div class="invalid-feedback">Description should be valid</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <br>
+          <select name="listing[category]" required class="form-select">
+  <option value="Rooms" <%= data.category === "Rooms" ? "selected" : "" %>>Rooms</option>
+  <option value="Beach" <%= data.category === "Beach" ? "selected" : "" %>>Beach</option>
+  <option value="Pools" <%= data.category === "Pools" ? "selected" : "" %>>Pools</option>
+  <option value="LakeFront" <%= data.category === "LakeFront" ? "selected" : "" %>>LakeFront</option>
+  <option value="MountainCity" <%= data.category === "MountainCity" ? "selected" : "" %>>MountainCity</option>
+  <option value="Castles" <%= data.category === "Castles" ? "selected" : "" %>>Castles</option>
+  <option value="Camping" <%= data.category === "Camping" ? "selected" : "" %>>Camping</option>
+  <option value="Farm" <%= data.category === "Farm" ? "selected" : "" %>>Farm</option>
+  <option value="Arctic" <%= data.category === "Arctic" ? "selected" : "" %>>Arctic</option>
+  <option value="Dome" <%= data.category === "Dome" ? "selected" : "" %>>Dome</option>
+  <option value="HouseBoat" <%= data.category === "HouseBoat" ? "selected" : "" %>>HouseBoat</option>
+  <option value="Building" <%= data.category === "Building" ? "selected" : "" %>>Building</option>
+  <option value="Trending" <%= data.category === "Trending" ? "selected" : "" %>>Trending</option>
+</select>
+        </div>
+
+         <div class="mb-3">
+            Original Listing image:<br>
+            <img src="<%=originalImage%>" height="300px" width="250px"/>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input type="file"  name="listing[image]" class="form-control">
+            
+        </div>
+         <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" value="<%=data.location%>" name="listing[location]" class="form-control" required>
+            <div class="invalid-feedback">location should be valid</div>
+        </div>
+        <div class="row">
+        <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input type="number"  value="<%=data.price%>" name="listing[price]" class="form-control" required>
+            <div class="invalid-feedback">Price should be valid</div>
+        </div>
+        <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" value="<%=data.country%>" name="listing[country]" class="form-control" required>
+            <div class="invalid-feedback">Country should be valid</div>
+        </div>
+        </div>
+      
+        <button class="btn btn-dark edit-btn mt-3">Edit</button>
+        <br>
+        <br>
+        <br>
+        <br>
+    </form>
+    </div>
+</div>
